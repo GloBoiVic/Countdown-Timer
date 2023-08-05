@@ -98,7 +98,34 @@ li span {
 
 .complete {
   position: relative;
-  top: 60px;
+  /* top: 60px; */
+}
+
+.complete-title {
+  animation: complete 4s infinite;
+}
+
+@keyframes complete {
+  0% {
+    color: rgb(rgb(236, 8, 8));
+  }
+
+  25% {
+    color: rgb(234, 234, 11);
+  }
+
+  50% {
+    color: rgb(11, 234, 59);
+    transform: scale(1.5);
+  }
+
+  75% {
+    color: rgb(26, 54, 236);
+  }
+
+  100% {
+    color: rgb(239, 0, 239);
+  }
 }
 
 /* Media Query: Large Smartphone (Vertical) */
