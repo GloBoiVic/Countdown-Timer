@@ -67,12 +67,6 @@ function updateCountdown(e) {
   e.preventDefault();
   countdownTitle = e.srcElement[0].value;
   countdownDate = e.srcElement[1].value;
-  savedCountdown = {
-    title: countdownTitle,
-    date: countdownDate,
-  };
-  localStorage.setItem('countdown', JSON.stringify(savedCountdown));
-
   if (!countdownTitle) {
     errorMsg.textContent = 'Please enter a countdown event';
     return;
@@ -81,6 +75,12 @@ function updateCountdown(e) {
     errorMsg.textContent = 'Please enter a future date';
     return;
   }
+  savedCountdown = {
+    title: countdownTitle,
+    date: countdownDate,
+  };
+
+  localStorage.setItem('countdown', JSON.stringify(savedCountdown));
 
   countdownValue = new Date(countdownDate).getTime();
   updateDom();
