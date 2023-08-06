@@ -8,6 +8,10 @@ const countdownElTitle = document.getElementById('countdownTitle');
 const countdownBtn = document.getElementById('countdownButton');
 const timeElements = document.querySelectorAll('span');
 
+const completeEl = document.getElementById('complete');
+const completeElInfo = document.getElementById('completeInfo');
+const completeBtn = document.getElementById('completeButton');
+
 // Global variables
 let countdownTitle = '';
 let countdownDate = '';
@@ -24,7 +28,6 @@ const day = hour * 24;
 const today = new Date().toISOString().split('T')[0];
 dateEl.setAttribute('min', today);
 
-//Populate Coundown / Complete UI
 function updateDom() {
   countdownActive = setInterval(() => {
     const now = new Date().getTime();
@@ -35,27 +38,35 @@ function updateDom() {
     const minutes = Math.floor((distance % hour) / minute);
     const seconds = Math.floor((distance % minute) / second);
 
-    // Populate Countdown
-    countdownElTitle.textContent = `${countdownTitle}`;
-    timeElements[0].textContent = `${days}`;
-    timeElements[1].textContent = `${hours}`;
-    timeElements[2].textContent = `${minutes}`;
-    timeElements[3].textContent = `${seconds}`;
-
     // Hide Input
     inputContainer.hidden = true;
-    // Show Countdown
-    countdownEl.hidden = false;
+
+    // Check if countdown is complete
+    if (distance < 0) {
+      // Show Countdown
+      countdownEl.hidden = true;
+      clearInterval(countdownActive);
+      completeElInfo.textContent = `${countdownTitle} finished on ${countdownDate}`;
+      completeEl.hidden = false;
+    } else {
+      // Populate Countdown
+      countdownElTitle.textContent = `${countdownTitle}`;
+      timeElements[0].textContent = `${days}`;
+      timeElements[1].textContent = `${hours}`;
+      timeElements[2].textContent = `${minutes}`;
+      timeElements[3].textContent = `${seconds}`;
+      // Show Countdown
+      completeEl.hidden = true;
+      countdownEl.hidden = false;
+    }
   }, second);
 }
 
-// Take Values from Form Input
 function updateCountdown(e) {
   e.preventDefault();
   countdownTitle = e.srcElement[0].value;
   countdownDate = e.srcElement[1].value;
 
-  // TODO: Add error handling for empty fields
   if (!countdownTitle) {
     errorMsg.textContent = 'Please enter a countdown event';
     return;
@@ -64,21 +75,22 @@ function updateCountdown(e) {
     errorMsg.textContent = 'Please enter a future date';
     return;
   }
-  console.log(countdownTitle, countdownDate);
 
   countdownValue = new Date(countdownDate).getTime();
-  console.log(`Countdown Value: ${countdownValue}`);
   updateDom();
 }
 
 function resetCountdown() {
   countdownEl.hidden = true;
+  completeEl.hidden = true;
   inputContainer.hidden = false;
   clearInterval(countdownActive);
+  countdownTitle = '';
+  countdownDate = '';
   errorMsg.textContent = '';
-
   countdownForm.reset();
 }
 
 countdownForm.addEventListener('submit', updateCountdown);
 countdownBtn.addEventListener('click', resetCountdown);
+completeBtn.addEventListener('click', resetCountdown);
