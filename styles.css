@@ -10,6 +10,8 @@ body {
   overflow-y: hidden;
   display: flex;
   align-items: center;
+  flex-direction: column;
+  justify-content: center;
   background: linear-gradient(to right, #40e0d0, #ff8c00, #ff0080);
   font-family: 'Edu SA Beginner', cursive;
 }
@@ -104,7 +106,6 @@ li span {
 
 .complete {
   position: relative;
-  /* top: 60px; */
 }
 
 .complete-title {
@@ -132,6 +133,10 @@ li span {
   100% {
     color: rgb(239, 0, 239);
   }
+}
+
+.footer {
+  margin-top: 2rem;
 }
 
 /* Media Query: Large Smartphone (Vertical) */
