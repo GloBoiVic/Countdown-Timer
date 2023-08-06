@@ -2,12 +2,12 @@
 
 <div align="center">
   <h3>
-    <a href="https://globoivic.github.io/Music-Player/">
+    <a href="https://globoivic.github.io/Countdown-Timer/">
       Demo
     </a>
     <span> | </span>
-    <a href="https://github.com/GloBoiVic/Music-Player">
-      Github Repo
+    <a href="https://github.com/GloBoiVic/Countdown-Timer">
+      Repo
     </a>
   </h3>
 </div>
