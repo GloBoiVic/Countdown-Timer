@@ -1,4 +1,5 @@
 const inputContainer = document.getElementById('inputContainer');
+const errorMsg = document.getElementById('errorMsg');
 const countdownForm = document.getElementById('countdownForm');
 const dateEl = document.getElementById('datePicker');
 
@@ -55,7 +56,14 @@ function updateCountdown(e) {
   countdownDate = e.srcElement[1].value;
 
   // TODO: Add error handling for empty fields
-  if (!countdownDate) return;
+  if (!countdownTitle) {
+    errorMsg.textContent = 'Please enter a countdown event';
+    return;
+  }
+  if (!countdownDate) {
+    errorMsg.textContent = 'Please enter a future date';
+    return;
+  }
   console.log(countdownTitle, countdownDate);
 
   countdownValue = new Date(countdownDate).getTime();
@@ -67,6 +75,8 @@ function resetCountdown() {
   countdownEl.hidden = true;
   inputContainer.hidden = false;
   clearInterval(countdownActive);
+  errorMsg.textContent = '';
+
   countdownForm.reset();
 }
 
