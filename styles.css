@@ -139,6 +139,14 @@ li span {
   margin-top: 2rem;
 }
 
+.footer a {
+  color: inherit;
+}
+
+.footer a:hover {
+  color: rgb(255, 255, 255);
+}
+
 /* Media Query: Large Smartphone (Vertical) */
 @media screen and (max-width: 600px) {
   .container {
