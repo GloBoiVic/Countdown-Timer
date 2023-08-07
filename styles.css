@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Edu+SA+Beginner:wght@400;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -67,7 +68,6 @@ input {
   margin-left: 0.8rem;
 }
 
-/* Button */
 button {
   width: 95%;
   height: 40px;
