@@ -14,7 +14,7 @@
 
 ## :page_facing_up: General Information
 
-Create a custom coundown timer that counts down to a future event date
+Create a custom countdown timer that counts down to a future event date
 
 ## :computer: Tech Stack
 
